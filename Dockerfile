@@ -5,8 +5,15 @@ LABEL name="Tempus Exporter"
 WORKDIR /app
 
 COPY requirements.txt .
-RUN apk add --no-cache tzdata && pip install --no-cache-dir --upgrade pip && pip install --no-cache-dir -r requirements.txt
-
+RUN apk add --no-cache \
+    tzdata \
+    build-base \
+    python3-dev \
+    libffi-dev \
+    openssl-dev \
+ && pip install --no-cache-dir -r requirements.txt \
+ && apk del build-base python3-dev
+ 
 COPY tempus ./tempus
 
 RUN adduser -D tempus && chown -R tempus:tempus /app

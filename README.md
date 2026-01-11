@@ -38,6 +38,14 @@ cp example.env .env
 python -m tempus
 ```
 
+## Docker build
+
+Build docker image
+
+```bash
+sudo docker build . --file Dockerfile -t tempos-exporter
+```
+
 ## 📦 Exposed Metrics
 
 ### Solar Metrics
