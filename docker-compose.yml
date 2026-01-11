@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  chronos-context:
+    build: .
+    ports:
+      - "8000:8000"
+      - "8001:8001"
+    environment:
+      - LATITUDE=49.2297
+      - LONGITUDE=-0.4458
+      - TIMEZONE=Europe/Paris
+      - PORT=8000
+      - COUNTRY_CODE=FR
+    restart: unless-stopped
