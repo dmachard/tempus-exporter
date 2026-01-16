@@ -25,13 +25,18 @@ is_working_day = Gauge('is_working_day', 'Is working day')
 trash_collection_today = Gauge('trash_collection_today', 'Trash today', ['type'])
 trash_next_days = Gauge('trash_next_days', 'Days until next', ['type'])
 
+# Moon metrics
+moon_phase_day = Gauge('moon_phase_day', 'Current moon phase day (0-27)')
+moon_phase_info = Gauge('moon_phase_info', 'Current moon phase description', ['phase'])
+
 # Store current context for JSON API
 current_context = {
     'timestamp': datetime.now().isoformat(),
     'sun': {},
     'season': {},
     'calendar': {},
-    'trash': {}
+    'trash': {},
+    'moon': {}
 }
 
 def start_http_server(port: int):
