@@ -19,6 +19,7 @@ class Config:
     api_port: int = int(os.getenv("API_PORT", "8001"))
     country_code: str = os.getenv("COUNTRY_CODE", "FR")
     hemisphere: str = os.getenv("HEMISPHERE", "north").lower()  # 'north' or 'south'
+    schedule_file: str = os.getenv("SCHEDULE_FILE", "schedule.yaml")
 
 
 config = Config()

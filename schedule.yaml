@@ -1,0 +1,9 @@
+trash:
+  black:
+    frequency: biweekly
+    day: Friday
+    reference_date: 2026-01-16
+  yellow:
+    frequency: biweekly
+    day: Friday
+    reference_date: 2026-01-23

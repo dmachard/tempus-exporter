@@ -12,4 +12,7 @@ services:
       - TIMEZONE=Europe/Paris
       - PORT=8000
       - COUNTRY_CODE=FR
+      - SCHEDULE_FILE=/schedule.yaml
+    volumes:
+      - ./schedule.yaml:/schedule.yaml
     restart: unless-stopped

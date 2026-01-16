@@ -71,3 +71,32 @@ is_school_holiday             # 1 during school breaks
 is_weekend                    # 1 on Saturday/Sunday
 is_working_day                # 1 on working days
 ```
+
+### Moon Metrics
+```
+moon_phase_day                # Current day of lunar cycle (0-28)
+moon_phase_info{phase=""}     # Current phase description (e.g. "Full Moon")
+```
+
+### Trash Metrics
+```
+trash_collection_today{type="black"} # 1 if collection is today
+trash_next_days{type="black"}        # Days until next collection
+```
+
+## ⚙️ Configuration
+
+### Trash Schedule
+You can configure trash collection in `schedule.yaml`:
+
+```yaml
+trash:
+  black:
+    frequency: biweekly
+    day: Friday
+    reference_date: 2026-01-16
+  yellow:
+    frequency: weekly
+    day: Tuesday
+```
+
