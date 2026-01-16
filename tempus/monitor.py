@@ -37,8 +37,11 @@ async def daily_updates(start_shutdown):
             except Exception as e:
                 logger.error(f"Error in daily updates: {e}")
         
+        # Calculate seconds until the next minute
+        sleep_seconds = 60 - datetime.now().second
+        
         try:
-            await asyncio.wait_for(start_shutdown.wait(), timeout=60)
+            await asyncio.wait_for(start_shutdown.wait(), timeout=sleep_seconds)
         except asyncio.TimeoutError:
             pass
 

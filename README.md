@@ -6,8 +6,8 @@ Export meaningful time context metrics to understand your monitoring data in rel
 
 ## Features
 
-- ☀️ **Solar metrics**: Sunrise, sunset, day length, seasonal progression
-- 🍂 **Seasonal context**: Current season, progress, solstice countdowns
+- ☀️ **Solar metrics**: Sunrise, sunset, day length
+- 🍂 **Seasonal context**: Current season, seasonal progression, solstice countdowns
 - 📅 **Calendar awareness**: Weekends, holidays, working days
 - 🚮 **Custom scrapers**: Trash collection, local events
 - 📊 **Prometheus format**: Ready for Grafana dashboards
@@ -55,7 +55,6 @@ sun_sunset_minutes            # Minutes since midnight for sunset
 sun_day_length_minutes        # Total daylight in minutes
 sun_day_gain_minutes          # Daily change in daylight
 sun_is_growing_day            # 1 if days are getting longer
-sun_season                    # 0=winter, 1=spring, 2=summer, 3=fall
 ```
 
 ### Seasonal Metrics

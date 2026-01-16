@@ -10,7 +10,6 @@ sun_sunset_minutes = Gauge('sun_sunset_minutes', 'Minutes since midnight for sun
 sun_day_length_minutes = Gauge('sun_day_length_minutes', 'Total daylight in minutes')
 sun_day_gain_minutes = Gauge('sun_day_gain_minutes', 'Daily change in daylight')
 sun_is_growing_day = Gauge('sun_is_growing_day', 'Whether days are getting longer')
-sun_season = Gauge('sun_season', 'Current season')
 
 # Seasonal metrics
 season_id = Gauge('season_id', 'Current season indicator', ['season'])
