@@ -61,7 +61,10 @@ sun_is_growing_day            # 1 if days are getting longer
 ```
 season_id{season="winter"}    # Current season indicator
 season_progress_percent       # Progress through current season
-days_until_season_change      # Days until season change
+days_until_spring             # Days until spring
+days_until_summer             # Days until summer
+days_until_fall               # Days until fall
+days_until_winter             # Days until winter
 ```
 
 ### Calendar Metrics

@@ -14,7 +14,10 @@ sun_is_growing_day = Gauge('sun_is_growing_day', 'Whether days are getting longe
 # Seasonal metrics
 season_id = Gauge('season_id', 'Current season indicator', ['season'])
 season_progress_percent = Gauge('season_progress_percent', 'Progress through season')
-days_until_season_change = Gauge('days_until_season_change', 'Days until next season change')
+days_until_spring = Gauge('days_until_spring', 'Days until spring')
+days_until_summer = Gauge('days_until_summer', 'Days until summer')
+days_until_fall = Gauge('days_until_fall', 'Days until fall')
+days_until_winter = Gauge('days_until_winter', 'Days until winter')
 
 # Calendar metrics
 is_public_holiday = Gauge('is_public_holiday', 'Is public holiday')

@@ -7,7 +7,10 @@ from tempus.config import config
 from tempus.metrics import (
     season_id,
     season_progress_percent,
-    days_until_season_change,
+    days_until_spring,
+    days_until_summer,
+    days_until_fall,
+    days_until_winter,
     current_context
 )
 
@@ -75,6 +78,47 @@ def get_season_info(date: datetime, hemisphere: str = 'north') -> tuple:
     return current_season, progress, max(0, days_to_next)
 
 
+def get_days_until_seasons(date: datetime) -> dict:
+    """Calculate days until each season start
+    
+    Args:
+        date: Current date
+        
+    Returns:
+        Dictionary with days until each season
+    """
+    year = date.year
+    
+    # Season start dates (Northern hemisphere dates - used as reference)
+    spring_start = datetime(year, 3, 20)
+    summer_start = datetime(year, 6, 21)
+    fall_start = datetime(year, 9, 22)
+    winter_start = datetime(year, 12, 21)
+    
+    # Calculate days until each season
+    days_to_spring = (spring_start - date).days
+    days_to_summer = (summer_start - date).days
+    days_to_fall = (fall_start - date).days
+    days_to_winter = (winter_start - date).days
+    
+    # If a season has passed this year, calculate for next year
+    if days_to_spring < 0:
+        days_to_spring = (datetime(year + 1, 3, 20) - date).days
+    if days_to_summer < 0:
+        days_to_summer = (datetime(year + 1, 6, 21) - date).days
+    if days_to_fall < 0:
+        days_to_fall = (datetime(year + 1, 9, 22) - date).days
+    if days_to_winter < 0:
+        days_to_winter = (datetime(year + 1, 12, 21) - date).days
+    
+    return {
+        'spring': days_to_spring,
+        'summer': days_to_summer,
+        'fall': days_to_fall,
+        'winter': days_to_winter
+    }
+
+
 def update_season_metrics():
     """Update seasonal metrics"""
     try:
@@ -88,19 +132,29 @@ def update_season_metrics():
         # Set current season
         season_id.labels(season=season_name).set(1)
         season_progress_percent.set(progress)
-        days_until_season_change.set(days_to_event)
+        
+        # Calculate and set days until each season
+        days_until_seasons = get_days_until_seasons(now)
+        days_until_spring.set(days_until_seasons['spring'])
+        days_until_summer.set(days_until_seasons['summer'])
+        days_until_fall.set(days_until_seasons['fall'])
+        days_until_winter.set(days_until_seasons['winter'])
         
         # Update context for JSON API
         current_context['season'] = {
             'name': season_name,
             'progress': round(progress, 1),
-            'days_to_next': days_to_event,
+            'days_until_spring': days_until_seasons['spring'],
+            'days_until_summer': days_until_seasons['summer'],
+            'days_until_fall': days_until_seasons['fall'],
+            'days_until_winter': days_until_seasons['winter'],
             'hemisphere': config.hemisphere
         }
         
         logger.debug(
             f"Season metrics updated ({config.hemisphere}): {season_name} at {progress:.1f}%, "
-            f"{days_to_event} days to next event"
+            f"spring:{days_until_seasons['spring']}d, summer:{days_until_seasons['summer']}d, "
+            f"fall:{days_until_seasons['fall']}d, winter:{days_until_seasons['winter']}d"
         )
         
     except Exception as e:
