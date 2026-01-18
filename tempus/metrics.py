@@ -32,6 +32,11 @@ trash_next_days = Gauge('trash_next_days', 'Days until next', ['type'])
 moon_phase_day = Gauge('moon_phase_day', 'Current moon phase day (0-27)')
 moon_phase_info = Gauge('moon_phase_info', 'Current moon phase description', ['phase'])
 
+# Birthday metrics
+birthday_this_month = Gauge('birthday_this_month', 'Birthday this month', ['name', 'day'])
+birthday_days_until = Gauge('birthday_days_until', 'Days until birthday', ['name'])
+birthday_today = Gauge('birthday_today', 'Is birthday today', ['name'])
+
 # Store current context for JSON API
 current_context = {
     'timestamp': datetime.now().isoformat(),
@@ -39,7 +44,8 @@ current_context = {
     'season': {},
     'calendar': {},
     'trash': {},
-    'moon': {}
+    'moon': {},
+    'birthdays': {}
 }
 
 def start_http_server(port: int):

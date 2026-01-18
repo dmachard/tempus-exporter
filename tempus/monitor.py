@@ -11,6 +11,7 @@ from tempus.seasons import update_season_metrics
 from tempus.holidays import update_holiday_metrics
 from tempus.trash import update_trash_metrics
 from tempus.moon import update_moon_metrics
+from tempus.birthdays import update_birthday_metrics
 from tempus.metrics import start_http_server
 from tempus.api import start_api_server
 
@@ -22,6 +23,7 @@ def run_all_updates():
     update_holiday_metrics()
     update_trash_metrics()
     update_moon_metrics()
+    update_birthday_metrics()
 
 
 async def daily_updates(start_shutdown):

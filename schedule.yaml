@@ -7,3 +7,11 @@ trash:
     frequency: biweekly
     day: Friday
     reference_date: 2026-01-23
+
+birthdays:
+  - name: "Alice"
+    date: "01-15"
+  - name: "Bob"
+    date: "01-18"
+  - name: "Charlie"
+    date: "03-10"
