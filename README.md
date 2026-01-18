@@ -87,10 +87,17 @@ trash_collection_today{type="black"} # 1 if collection is today
 trash_next_days{type="black"}        # Days until next collection
 ```
 
+### Birthday Metrics
+```
+birthday_this_month{name="Alice", day="15"} # 1 if birthday is this month
+birthday_days_until{name="Alice"}           # Days until next birthday
+birthday_today{name="Alice"}                # 1 if birthday is today
+```
+
 ## ⚙️ Configuration
 
-### Trash Schedule
-You can configure trash collection in `schedule.yaml`:
+### Schedule
+You can configure trash collection and birthdays in `schedule.yaml`:
 
 ```yaml
 trash:
@@ -101,5 +108,11 @@ trash:
   yellow:
     frequency: weekly
     day: Tuesday
+
+birthdays:
+  - name: "Alice"
+    date: "01-15"
+  - name: "Bob"
+    date: "01-18"
 ```
 
