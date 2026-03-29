@@ -9,6 +9,7 @@ Export meaningful time context metrics to understand your monitoring data in rel
 - ☀️ **Solar metrics**: Sunrise, sunset, day length
 - 🍂 **Seasonal context**: Current season, seasonal progression, solstice countdowns
 - 📅 **Calendar awareness**: Weekends, holidays, working days
+- ⏰ **Clock & DST**: Daylight Saving Time status, transitions countdown
 - 🚮 **Custom scrapers**: Trash collection, local events
 - 📊 **Prometheus format**: Ready for Grafana dashboards
 
@@ -73,6 +74,13 @@ is_public_holiday             # 1 on public holidays
 is_school_holiday             # 1 during school breaks
 is_weekend                    # 1 on Saturday/Sunday
 is_working_day                # 1 on working days
+
+### Clock & DST Metrics
+```
+clock_is_summer_time          # 1 if in summer time (DST), 0 for winter
+clock_days_until_dst_change   # Days until the next time change
+clock_dst_change_offset       # Next change: +1 (spring) or -1 (autumn)
+```
 ```
 
 ### Moon Metrics
