@@ -1,5 +1,5 @@
 astral==3.2
-python-dotenv==1.2.1
+python-dotenv==1.2.2
 prometheus-client==0.24.1
 holidays==0.91
 loguru==0.7.3
