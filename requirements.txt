@@ -1,7 +1,7 @@
 astral==3.2
 python-dotenv==1.2.1
 prometheus-client==0.24.1
-holidays==0.91
+holidays==0.95
 loguru==0.7.3
 aiohttp==3.13.3
 pytz==2025.2
